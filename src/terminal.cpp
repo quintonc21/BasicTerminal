@@ -55,7 +55,7 @@ void terminal_app() {
         std::vector<char*> c_args = castArgs(args);
         c_args.push_back(nullptr); 
 
-        int status = run_cmd(c_args);
+        run_cmd(c_args);
 
         for (char* arg : c_args) {
             delete[] arg;
