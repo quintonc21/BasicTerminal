@@ -32,7 +32,7 @@ void mypipe::redirect(){
 // read(): Reads data from the pipe's read end and returns it as a std::string.
 // Typically used to capture the output that was redirected into the pipe.
 std::string mypipe::read() {
-    std::array<char, 256> buf;
+    std::array<char, 256> buf{};
     
     std::size_t bytes;
     bytes = ::read(fd[0], buf.data(), buf.size());
