@@ -13,15 +13,15 @@
 // Returns 0 on success, non-zero on failure.
 int run_cmd(std::vector<char*> argv) {
     
-    if (args.empty()) {
-        return 1
+    if (argv.empty()) {
+        return 1;
     }
     pid_t pid = fork();
-    if (pid == 1) {
+    if (pid == -1) {
         perror("fork failed");
         return 1;
     }
-    std::vector<char*> argv = to_c_argv(args);
+
     if (pid == 0) {
         execvp(argv[0], argv.data());
         perror("exec failed");

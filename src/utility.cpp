@@ -4,14 +4,12 @@
 
 // Converts vector of strings to vector of char* (C-style strings)
 std::vector<char*> castArgs(const std::vector<std::string>& cmd) {
-    std::vector<char*> charVector;
-    
-    for (const std::string& str : cmd) {
-        char* cstr = new char[str.length() + 1];
-        strcpy(cstr, str.c_str());
-        charVector.push_back(cstr);
+    std::vector<char*> argv;
+    for (const auto& arg : cmd) {
+    argv.push_back(const_cast<char*>(arg.c_str()));
     }
-    return charVector;
+    argv.push_back(nullptr); // null-terminate
+    return argv;
 }
 
 // Converts a command string to a vector of words
