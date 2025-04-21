@@ -1,6 +1,6 @@
  //mypipe.h
  #include "mypipe.h"
- #include <String>
+ #include <string>
  #include <array>
  #include <unistd.h>
  #include <sys/wait.h>
