@@ -4,6 +4,7 @@
 #include <vector>
 #include <iostream>
 #include "utility.h"
+#include <mypipe.h>
 
 
 // run_cmd:
@@ -12,7 +13,7 @@
 // Captures the output using a custom pipe (mypipe) and prints it to the terminal.
 // Returns 0 on success, non-zero on failure.
 int run_cmd(std::vector<char*> argv) {
-    
+    mypipe pipe;
     if (argv.empty()) {
         return 1;
     }
@@ -23,15 +24,18 @@ int run_cmd(std::vector<char*> argv) {
     }
 
     if (pid == 0) {
+        pipe.redirect();
         execvp(argv[0], argv.data());
         perror("exec failed");
         exit(127);
     }
+    pipe.closePipe();
     int status{0};
     if (waitpid(pid, &status, 0) == -1) {
         perror("waitpid failed");
         return 1;
     }
+    std::cout << pipe.read();
     return status;
 }
 

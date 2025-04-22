@@ -21,11 +21,14 @@ mypipe::~mypipe() {
     close(fd[1]);
 }
 
+void mypipe::closePipe(){
+    close(fd[1]);
+}
+
 // redirect(): Redirects standard output (STDOUT) to the pipe's write end.
 // This allows capturing output that would normally go to the console.
 void mypipe::redirect(){
     dup2(fd[1], STDOUT_FILENO);
-    close(fd[0]);
     close(fd[1]);
 }
 

@@ -25,4 +25,6 @@
      // read(): Reads data from the pipe's read end and returns it as a std::string.
      // Typically used to capture the output that was redirected into the pipe.
      std::string read();
+
+     void closePipe();
  };
