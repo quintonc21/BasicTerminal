@@ -47,9 +47,8 @@ void terminal_app() {
         std::cout << "terminal> ";
         std::getline(std::cin, input);
 
-        if (input.empty()) continue;
-
-        if (input == "exit") break;
+        if (input == "exit") 
+            break;
 
         std::vector<std::string> args = cmd2vec(input);
         std::vector<char*> c_args = castArgs(args);
