@@ -11,7 +11,7 @@
 // Constructor: Creates a unidirectional pipe using pipe().
 // pipe() initializes two file descriptors: fd[0] for reading, fd[1] for writing.
 mypipe::mypipe() {
-    pipe(&fd[0]);
+    pipe(fd.data());
 
 }
 
