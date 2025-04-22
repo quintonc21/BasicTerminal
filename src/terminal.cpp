@@ -57,8 +57,5 @@ void terminal_app() {
 
         run_cmd(c_args);
 
-        for (char* arg : c_args) {
-            delete[] arg;
-        }
     }
 }
